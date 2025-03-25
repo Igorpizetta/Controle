@@ -25,3 +25,12 @@ sys = zpk(z,p,K)
 print(zeta)
 print(zeta_dg)
 print(sys)
+
+# Step response for the system
+
+figure(1)
+
+# Generate the root locus plot within the created figure
+rlocus(sys)
+tight_layout()
+show()
