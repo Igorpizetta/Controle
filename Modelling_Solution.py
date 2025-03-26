@@ -1,6 +1,6 @@
 import os
 from sympy import *
-import sympy as sp
+
 os.system('clear')  # Para macOS e Linux
 
 # Variáveis simbólicas
