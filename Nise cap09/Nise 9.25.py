@@ -46,7 +46,7 @@ plt.title("Lugar das Raízes - Sistema sem Compensador")
 # Step 3: Geometry calculation for derivative compensator zero (Zc)
 # Given directly by solution geometry:
 Zc = 7.71
-K = 1.683
+K = 1.3
 
 print("\nStep 3 - Derivative compensator zero location:")
 print(f"Zc = {Zc}")
@@ -58,11 +58,12 @@ print("\nStep 4 - Final PID compensator:")
 print(f"PID compensator Gc(s) = {Gc_PID}")
 
 # Final Open Loop transfer function with compensator
-OLTF = K*Gc_PID * G
+OLTF = Gc_PID * G
 print("\nOpen Loop Transfer Function with PID compensator:")
 print(OLTF)
 
-CLTF = feedback(OLTF, 1)
+G_cl = feedback(G, 1)
+CLTF = feedback(K*OLTF, 1)
 print("\nClosed Loop Transfer Function with PID compensator:")
 print(CLTF)
 
@@ -73,8 +74,8 @@ plt.title("Lugar das Raízes - Sistema Compensado")
 
 # PARTE 3: Resposta ao degrau
 
-t = np.linspace(0, 5, 1000)
-y1, _ = step(G, t)
+t = np.linspace(0, 3, 1000)
+y1, _ = step(G_cl, t)
 y2, _ = step(CLTF, t)
 
 plt.figure(figsize=(10, 6))
