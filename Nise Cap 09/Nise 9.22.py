@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt         # Biblioteca para gráficos
 from control.matlab import *  # MATLAB-like functions
 from math import pi, tan, atan, log
 from utils import *
-os.system('clear')  # Para macOS/Linux. Use 'cls' no Windows se quiser.
 
 
 # PARTE A: Definindo especificações de ultrapassagem de 30%
@@ -73,6 +72,3 @@ data = {
         Kv_required, Kv_compensated, improvement, z_lag, p_lag
     ]
 }
-
-df = pd.DataFrame(data)
-import ace_tools as tools; tools.display_dataframe_to_user(name="Resultados da Questão 22 - Projeto Compensador", dataframe=df)
