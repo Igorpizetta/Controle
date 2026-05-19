@@ -7,16 +7,16 @@ from control.matlab import *  # MATLAB-like functions
 from math import *
 
 
-OS = 0.1
+OS = 0.0432
 
 zeta = -ln(OS) / sqrt(pi**2 + ln(OS)**2)
 print(f"Zeta para overshoot de {OS*100:.1f}%: {zeta:.4f}")
 
 
 # Definindo os parâmetros
-K = 4.6045
-zeros = [-6]             # Nenhum zero
-polos = [ -2, -3, -5]     # Polos do sistema
+K = 45.9
+zeros = []             # Nenhum zero
+polos = [0,-20,-40]     # Polos do sistema
 
 # Criando a função de transferência usando zpk
 G = zpk(zeros, polos, K)
@@ -32,9 +32,9 @@ plt.grid(True)
 plt.tight_layout()
 
 
-K = 0.1
-zeros = [-7.21,-0.05]             # Nenhum zero
-polos = [-0.01]     # Polos do sistema
+K = 1.5
+zeros = [-5.5]             # Nenhum zero
+polos = [-7.28]     # Polos do sistema
 
 # Criando a função de transferência usando zpk
 Gc = zpk(zeros, polos, K)
@@ -67,7 +67,7 @@ print(f"Tempo de subida: {stepinfo_Gmf} s")
 
 
 # Plotar a resposta ao degrau
-t = np.linspace(0, 60, 20000)
+t = np.linspace(0, 4, 20000)
 y1, _ = step(Gmf, t)
 y2, _ = step(Gmfc, t)
 
